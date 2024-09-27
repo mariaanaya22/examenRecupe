@@ -1,4 +1,3 @@
-
 class Habitacion {
     constructor(numero, tipo) {
         this.numero = numero; 

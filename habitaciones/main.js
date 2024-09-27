@@ -6,7 +6,7 @@ const hotel = new Hotel();
 // Agregar habitaciones
 hotel.agregarHabitacion(101, 'simple');
 hotel.agregarHabitacion(102, 'doble');
-hotel.agregarHabitacion(201, 'suite');
+hotel.agregarHabitacion(201, 'Queen');
 
 
 hotel.mostrarHabitacionesDisponibles();
