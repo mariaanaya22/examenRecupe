@@ -11,52 +11,50 @@ class Hotel {
     }
 
     alquilarHabitacion(numero) {
-        let habitacion;
-    
         for (let i = 0; i < this.habitaciones.length; i++) {
-            if (this.habitaciones[i].numero === numero) {
-                habitacion = this.habitaciones[i];
-                break;
+            let habitacion = this.habitaciones[i]; 
+    
+            if (habitacion.numero === numero) {
+                if (!habitacion.disponible) {
+                    return console.log(`La habitación ${numero} no está disponible.`);
+                }
+    
+                habitacion.alquilar();
+                console.log(`Habitación ${numero} alquilada.`);
+                return; 
             }
         }
     
-        if (!habitacion) {
-            return console.log(`Habitación ${numero} no encontrada.`);
-        }
-        if (!habitacion.disponible) {
-            return console.log(`La habitación ${numero} no está disponible.`);
-        }
-        
-        habitacion.alquilar();
-        console.log(`Habitación ${numero} alquilada.`);
+        console.log(`Habitación ${numero} no encontrada.`);
     }
-
-    liberarHabitacion(numero) {
-        let habitacion;
-        for (let i = 0; i < this.habitaciones.length; i++) {
-            if (this.habitaciones[i].numero === numero) {
-                habitacion = this.habitaciones[i];
-                break;
-            }
-        }
     
-        if (!habitacion) {
-            return console.log(`Habitación ${numero} no encontrada.`);
-        }
-        if (habitacion.disponible) {
-            return console.log(`La habitación ${numero} ya está disponible.`);
+    
+       
+    liberarHabitacion(numero) {
+    
+        for (let i = 0; i < this.habitaciones.length; i++) {
+          let  habitacion = this.habitaciones[i];
+          if(habitacion.numero === numero) {
+            if (!habitacion.disponible){
+                return console.log(`La habitación ${numero} no está alquilada.`);
+            }
+            
+            habitacion.liberar();
+            console.log(`Habitación ${numero} liberada.`);
+            
         }
         
-        habitacion.liberar();
-        console.log(`Habitación ${numero} liberada.`);
+    
+    }
+        
+   
     }
 
     mostrarHabitacionesDisponibles() {
         console.log("Habitaciones disponibles:");
         
         for (let i = 0; i < this.habitaciones.length; i++) {
-            if (this.habitaciones[i].disponible) {
-                // Imprime información de la habitación
+            if (this.habitaciones[i].disponible) {   
                 console.log(`Habitación ${this.habitaciones[i].numero}, Tipo: ${this.habitaciones[i].tipo}`);
             }
         }
